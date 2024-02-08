@@ -1,4 +1,3 @@
-
 # Desafio CRUD: Aplicação To-Do List com NestJS e PostgreSQL no Docker
 
 Este desafio consiste em desenvolver uma API RESTful para uma aplicação de lista de tarefas, utilizando o framework NestJS para o backend e PostgreSQL como banco de dados. O PostgreSQL será executado em um container Docker, proporcionando um ambiente isolado e fácil de configurar.
@@ -8,13 +7,16 @@ Este desafio consiste em desenvolver uma API RESTful para uma aplicação de lis
 ### Requisitos Funcionais
 
 - **Criação de Tarefa (Create)**
+
   - Endpoint para criar uma nova tarefa com título, descrição (opcional) e status (ex.: pendente, concluída).
 
 - **Leitura de Tarefas (Read)**
+
   - Endpoint para listar todas as tarefas.
   - Endpoint para buscar uma tarefa específica pelo ID.
 
 - **Atualização de Tarefa (Update)**
+
   - Endpoint para atualizar o título, descrição e/ou status de uma tarefa existente pelo ID.
 
 - **Exclusão de Tarefa (Delete)**
@@ -23,15 +25,19 @@ Este desafio consiste em desenvolver uma API RESTful para uma aplicação de lis
 ### Requisitos Não Funcionais
 
 - **Banco de Dados PostgreSQL**
+
   - Utilize PostgreSQL rodando em um container Docker.
 
 - **ORM**
+
   - Utilize TypeORM para interação com o banco de dados.
 
 - **Validações**
+
   - Implemente validações para os dados de entrada.
 
 - **Testes**
+
   - Escreva testes unitários e/ou de integração.
 
 - **Documentação**
@@ -42,9 +48,11 @@ Este desafio consiste em desenvolver uma API RESTful para uma aplicação de lis
 ### Configurando PostgreSQL no Docker
 
 1. **Criar o Container Docker para PostgreSQL**
+
    ```bash
    docker run --name postgres-todo -e POSTGRES_PASSWORD=senha123 -p 5432:5432 -d postgres
    ```
+
    Substitua `senha123` pela senha que desejar.
 
 2. **Verificar o Container**
@@ -53,12 +61,14 @@ Este desafio consiste em desenvolver uma API RESTful para uma aplicação de lis
 ### Conectar o PostgreSQL com NestJS
 
 1. **Instalar Dependências no Projeto NestJS**
+
    ```bash
    npm install @nestjs/typeorm typeorm pg
    ```
 
 2. **Configuração do TypeORM no `app.module.ts`**
    Adicione a conexão TypeORM apontando para o seu PostgreSQL no Docker:
+
    ```typescript
    import { Module } from '@nestjs/common';
    import { TypeOrmModule } from '@nestjs/typeorm';
@@ -79,14 +89,17 @@ Este desafio consiste em desenvolver uma API RESTful para uma aplicação de lis
    })
    export class AppModule {}
    ```
+
    Altere `senha123` pela sua senha configurada no Docker.
 
 ### Executando a Aplicação
 
 Inicie sua aplicação NestJS com:
+
 ```bash
 npm run start
 ```
+
 Se tudo estiver configurado corretamente, sua aplicação NestJS iniciará e se conectará ao banco de dados PostgreSQL no Docker.
 
 ## Desenvolvimento
