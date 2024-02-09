@@ -1,7 +1,7 @@
-FROM node:18
+FROM --platform=linux/x86_64 node:18.16.0
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install app dependencies
 COPY package*.json ./
@@ -15,4 +15,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD [ 'npm', 'run', 'start:prod' ]
+CMD [ "npm", "run" , "start:prod" ]

@@ -1,12 +1,11 @@
 version: '3.9'
-
 services:
   nestapp:
     container_name: nestapp
     image: paulodevs/nestapp:1.0.0
     build: .
     ports:
-      - 3000:3000
+      - '3000:3000'
     environment:
       - DB_TYPE=postgres
       - PG_HOST=db
@@ -18,9 +17,9 @@ services:
       - db
   db:
     container_name: db
-    image: postgres:12
+    image: postgres:14
     ports:
-      - 5432:5432
+      - '5432:5432'
     environment:
       - PG_USER=postgres
       - PG_PASSWORD=postgres
