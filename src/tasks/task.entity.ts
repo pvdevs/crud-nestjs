@@ -12,5 +12,12 @@ export class Task {
   description: string;
 
   @Column()
-  status: string;
+  taskStatus: string;
+
+  constructor(task?: Partial<Task>) {
+    this.id = task?.id;
+    this.title = task?.title;
+    this.description = task?.description;
+    this.taskStatus = task?.taskStatus;
+  }
 }

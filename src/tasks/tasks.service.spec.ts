@@ -5,13 +5,14 @@ import { Task } from './task.entity';
 
 const mockTasksRepository = {
   save: jest.fn(),
+  create: jest.fn(),
   find: jest.fn(),
   findOne: jest.fn(),
   delete: jest.fn(),
 };
 
 describe('TasksService', () => {
-  let service: TasksService;
+  let tasksService: TasksService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -24,10 +25,14 @@ describe('TasksService', () => {
       ],
     }).compile();
 
-    service = module.get<TasksService>(TasksService);
+    tasksService = module.get<TasksService>(TasksService);
   });
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
+    expect(tasksService).toBeDefined();
+  });
+
+  describe('findAll', () => {
+    it('should return a tasks list entity successfully', async () => {});
   });
 });
