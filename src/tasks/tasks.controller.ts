@@ -14,6 +14,8 @@ import { FindAllTasksSwagger } from './swagger/findall-tasks.swagger';
 import { CreateTaskSwagger } from './swagger/create-task.swagger';
 import { FindOneTaskSwagger } from './swagger/findone-task.swagger';
 import { UpdateTaskSwagger } from './swagger/update-task.swagger';
+import { BadRequestSwagger } from './helper/swagger/bad-request.swagger';
+import { NotFoundSwagger } from './helper/swagger/not-found.swagger';
 
 @Controller('tasks')
 @ApiTags('tasks')
@@ -41,7 +43,11 @@ export class TasksController {
     description: 'Dados de uma task retornados com sucesso',
     type: FindOneTaskSwagger,
   })
-  @ApiResponse({ status: 404, description: 'Task nao encontrada' })
+  @ApiResponse({
+    status: 404,
+    description: 'Task nao encontrada',
+    type: NotFoundSwagger,
+  })
   async findOne(@Param('id') id: number): Promise<Task> {
     const task = await this.tasksService.findOne(id);
 
@@ -60,7 +66,11 @@ export class TasksController {
     description: 'Nova task criada com sucesso',
     type: CreateTaskSwagger,
   })
-  @ApiResponse({ status: 400, description: 'Busca invalida' })
+  @ApiResponse({
+    status: 400,
+    description: 'Busca invalida',
+    type: BadRequestSwagger,
+  })
   async create(@Body() task: Task): Promise<Task> {
     return await this.tasksService.create(task);
   }
@@ -73,7 +83,11 @@ export class TasksController {
     description: 'Task atualizada com sucesso',
     type: UpdateTaskSwagger,
   })
-  @ApiResponse({ status: 404, description: 'Task nao encontrada' })
+  @ApiResponse({
+    status: 404,
+    description: 'Task nao encontrada',
+    type: NotFoundSwagger,
+  })
   async update(@Param('id') id: number, @Body() task: Task): Promise<Task> {
     return this.tasksService.update(id, task);
   }
