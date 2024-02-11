@@ -2,6 +2,8 @@
 - Nestjs
 - Postgresql
 - Docker
+- Jest
+- Swagger
 
 
 ## Prerequisites
@@ -29,6 +31,18 @@ docker compose up -d
 And then run:
 ```
 npm run start
+```
+
+## Tests
+Run:
+```
+npm run test
+```
+
+## Documentation
+You can check out the documentation in:
+```
+localhost:3000/api
 ```
 
 **If everything is correct, you should se a Hello World on your localhost:3000, and an empty array on localhost:3000/tasks**
